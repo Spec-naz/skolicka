@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="cs"><head><meta charset="utf-8"><title>Školička – hřiště úkolů</title><link rel="stylesheet" href="../css/style.css">
+<style>.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}.bar select,.bar button{padding:8px 10px;font:inherit;border-radius:10px;border:2px solid #cfd8dc}#res{color:#6b7a85;font-size:.9rem}</style></head>
+<body><div id="app"><div class="bar"><select id="skill"></select><select id="level"></select><button id="go">Vygenerovat</button><label style="flex-direction:row;align-items:center"><input type="checkbox" id="spk" checked> číst nahlas</label><span id="res"></span></div><main class="task" id="task"></main></div>
+<script type="module">
+import { SCREEN_SKILLS } from '../js/data/curriculum.js';
+import { generateTask } from '../js/tasks/generators.js';
+import { makeRng } from '../js/engine/rng.js';
+import { runTask } from '../js/ui/render.js';
+const sk = document.getElementById('skill'), lv = document.getElementById('level');
+sk.innerHTML = SCREEN_SKILLS.map(s => `<option value="${s.id}">${s.name} (${s.domain})</option>`).join('');
+const fillLv = () => { const s = SCREEN_SKILLS.find(x => x.id === sk.value); lv.innerHTML = s.levels.map((l, i) => `<option value="${i}">${i + 1}. ${l.label} [${l.gen}]</option>`).join(''); };
+sk.onchange = fillLv; fillLv();
+const h = location.hash.slice(1).split('/'); if (h[0]) { sk.value = h[0]; fillLv(); if (h[1]) lv.value = h[1]; }
+async function go() { const s = SCREEN_SKILLS.find(x => x.id === sk.value); location.hash = `${sk.value}/${lv.value}`; const t = generateTask(s, Number(lv.value), makeRng()); console.log(t); const r = await runTask(t, document.getElementById('task'), { autoSpeak: document.getElementById('spk').checked }); document.getElementById('res').textContent = `výsledek: ${r.ok ? 'OK' : 'chyba'}, ${r.ms} ms, chyb ${r.errors}`; }
+document.getElementById('go').onclick = go; go();
+</script></body></html>

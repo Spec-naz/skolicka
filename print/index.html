@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Školička – pracovní listy</title>
+<style>
+  body { margin: 0; font-family: "Nunito", "Avenir Next", "Segoe UI", system-ui, sans-serif; background: #e9ecef; color: #222; }
+  .toolbar { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #ccc; padding: 12px 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; z-index: 2; }
+  .toolbar label { font-size: .9rem; display: inline-flex; gap: 4px; align-items: center; background: #f3f4f6; padding: 4px 8px; border-radius: 8px; }
+  .toolbar button { font: inherit; padding: 8px 14px; border-radius: 10px; border: 0; background: #ff7043; color: #fff; font-weight: 700; cursor: pointer; } .toolbar button.sec { background: #cfd8dc; color: #222; }
+  .toolbar input[type=text] { font: inherit; padding: 6px 8px; border: 1px solid #bbb; border-radius: 8px; width: 120px; }
+  #pages { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 16px; }
+  .page { width: 210mm; height: 297mm; background: #fff; padding: 12mm 15mm; box-sizing: border-box; display: flex; flex-direction: column; box-shadow: 0 2px 12px rgba(0,0,0,.15); page-break-after: always; break-after: page; }
+  .ws-head { display: flex; justify-content: space-between; gap: 10mm; border-bottom: 1.5px solid #000; padding-bottom: 3mm; margin-bottom: 4mm; } .ws-head h2 { margin: 0 0 2mm; font-size: 16pt; } .instr { margin: 0; font-size: 11pt; } .meta { font-size: 9pt; text-align: right; white-space: nowrap; } .code { color: #888; font-size: 7pt; }
+  svg.ws { width: 180mm; height: 236mm; flex: 1; }
+  .ws-foot { display: flex; justify-content: space-between; gap: 8mm; border-top: 1px solid #999; padding-top: 2mm; font-size: 8pt; color: #444; } .eval { white-space: nowrap; }
+  @media print { body { background: #fff; } .toolbar { display: none; } #pages { padding: 0; gap: 0; } .page { box-shadow: none; margin: 0; } @page { size: A4 portrait; margin: 0; } }
+</style></head>
+<body>
+<div class="toolbar">
+  <strong>🖨️ Pracovní listy</strong>
+  <span id="chk"></span>
+  <label>Jméno <input type="text" id="child"></label>
+  <button id="gen">Vygenerovat</button><button id="print">Tisknout</button><button class="sec" id="all">Vybrat vše</button><button class="sec" id="none">Nic</button>
+  <a href="../index.html" style="margin-left:auto">← zpět do aplikace</a>
+</div>
+<div id="pages"></div>
+<script type="module">
+import { WORKSHEETS, buildWorksheet } from './worksheets.js';
+const chk = document.getElementById('chk'); const pages = document.getElementById('pages');
+chk.innerHTML = Object.entries(WORKSHEETS).map(([k, w]) => `<label><input type="checkbox" value="${k}"> ${w.name}</label>`).join(' ');
+try { const st = JSON.parse(localStorage.getItem('skolicka.v1') || 'null'); if (st?.child?.name) document.getElementById('child').value = st.child.name; } catch {}
+let params = {};
+const h = decodeURIComponent(location.hash.slice(1)); if (h) { const [type, pj] = h.split(':'); const cb = chk.querySelector(`input[value="${type}"]`); if (cb) { cb.checked = true; try { params[type] = JSON.parse(pj || '{}'); } catch {} } }
+function gen() { const sel = [...chk.querySelectorAll('input:checked')].map(i => i.value); if (!sel.length) { pages.innerHTML = '<p style="padding:20px">Vyberte alespoň jeden pracovní list.</p>'; return; } pages.innerHTML = sel.map((t, i) => buildWorksheet(t, params[t] || {}, Date.now() + i * 1013, document.getElementById('child').value)).join(''); }
+document.getElementById('gen').onclick = gen; document.getElementById('print').onclick = () => window.print();
+document.getElementById('all').onclick = () => { chk.querySelectorAll('input').forEach(i => i.checked = true); gen(); };
+document.getElementById('none').onclick = () => chk.querySelectorAll('input').forEach(i => i.checked = false);
+if (!h) ['spojovacka', 'labyrint', 'cary'].forEach(t => chk.querySelector(`input[value="${t}"]`).checked = true);
+gen();
+</script></body></html>

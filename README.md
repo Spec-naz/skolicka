@@ -12,6 +12,9 @@ Osobní vzdělávací aplikace pro předškoláka (4–6 let): hravé interaktiv
 - **Soukromí**: žádný server, žádná telemetrie. Vše v `localStorage` prohlížeče, záloha do JSON.
 
 ## Spuštění
+Online (GitHub Pages): <https://spec-naz.github.io/skolicka/> – funguje i na tabletu, data zůstávají v prohlížeči daného zařízení.
+
+Lokálně:
 ```bash
 python3 -m http.server 8791
 ```

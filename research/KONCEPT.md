@@ -1,6 +1,6 @@
 # ŠKOLIČKA – pedagogický koncept
 
-Datum: 2026-11-13 · Podklad: `research/RESEARCH.md` (126 zdrojů, čísla zdrojů v závorkách odkazují tam)
+Datum: 2026-11-13 · Podklad: `research/RESEARCH.md` (124 zdrojů, čísla zdrojů v závorkách odkazují tam)
 
 ## 1. Pro koho a proč
 Chlapec, 4,5 roku. Zná celou abecedu, spolehlivě počítá do 20, s drobným zaseknutím do 50, sčítá malá čísla (2 + 2). Písmena a čísla ho baví, čísla ještě víc. Cílem **není** „vyrobit génia“, ale udržet radost z objevování, rozšířit záběr o oblasti, které si dítě samo nevybere (ruka, paměť, pozornost, prostor), a dát rodiči přehled, co dál.

@@ -16,7 +16,7 @@ export const SKILLS = [
   // ───────────── ČÍSLA ─────────────
   { id: 'pocitani', domain: 'cisla', name: 'Počítání předmětů', child: 'Spočítej', emoji: '🍎',
     desc: 'Přepočítávání s přiřazením jedna-ku-jedné a kardinalita (poslední číslo = počet).',
-    refs: ['2.01', '2.02', '2.06'],
+    refs: ['2.13', '2.15', '6.08', '4.12', '2.17'],
     levels: [
       { label: 'do 5',  gen: 'countChoose', params: { max: 5 } },
       { label: 'do 10', gen: 'countChoose', params: { max: 10 } },
@@ -25,7 +25,7 @@ export const SKILLS = [
     ] },
   { id: 'subitizace', domain: 'cisla', name: 'Rychlé poznání počtu', child: 'Kolik to bylo?', emoji: '🎲',
     desc: 'Subitizace: okamžité rozpoznání malých počtů a strukturovaných uspořádání (kostka, desetirámeček).',
-    refs: ['2.03', '2.06'],
+    refs: ['2.04', '2.05', '5.10', '2.15'],
     levels: [
       { label: '1–3 tečky', gen: 'subitize', params: { max: 3, ms: 1500, layout: 'random' } },
       { label: '1–6 jako na kostce', gen: 'subitize', params: { max: 6, ms: 1200, layout: 'dice' } },
@@ -34,7 +34,7 @@ export const SKILLS = [
     ] },
   { id: 'cislice', domain: 'cisla', name: 'Číslice', child: 'Najdi číslo', emoji: '7️⃣',
     desc: 'Spojení číslice s názvem čísla a s množstvím.',
-    refs: ['2.02', '2.04'],
+    refs: ['2.07', '2.08', '2.17', '2.05'],
     levels: [
       { label: '0–10 (slyšíš → najdi)', gen: 'numeralPick', params: { max: 10, options: 4 } },
       { label: '0–10 (číslice → počet)', gen: 'numeralToQuantity', params: { max: 10 } },
@@ -44,7 +44,7 @@ export const SKILLS = [
     ] },
   { id: 'rada', domain: 'cisla', name: 'Číselná řada', child: 'Které číslo chybí?', emoji: '🔟',
     desc: 'Pořadí čísel, následník a předchůdce, číselná osa, počítání po desítkách.',
-    refs: ['2.04', '2.05', '2.08'],
+    refs: ['2.07', '2.08', '2.05', '2.18'],
     prereq: { cislice: 1 },
     levels: [
       { label: 'Klikej 1–10 popořadě', gen: 'tapInOrder', params: { max: 10 } },
@@ -56,7 +56,7 @@ export const SKILLS = [
     ] },
   { id: 'porovnani', domain: 'cisla', name: 'Více a méně', child: 'Kde je víc?', emoji: '⚖️',
     desc: 'Porovnávání množství a čísel.',
-    refs: ['2.02', '2.08'],
+    refs: ['2.07', '2.08', '2.10', '2.01'],
     levels: [
       { label: 'Skupiny do 5', gen: 'compareGroups', params: { max: 5 } },
       { label: 'Skupiny do 10', gen: 'compareGroups', params: { max: 10 } },
@@ -65,7 +65,7 @@ export const SKILLS = [
     ] },
   { id: 'scitani', domain: 'cisla', name: 'Sčítání', child: 'Kolik je dohromady?', emoji: '➕',
     desc: 'Od sčítání s obrázky k zpaměti; strategie „počítej dál“ od většího sčítance.',
-    refs: ['2.07', '2.09'],
+    refs: ['2.09', '2.05', '2.18', '2.15'],
     prereq: { pocitani: 1 },
     levels: [
       { label: 'do 5 s obrázky', gen: 'addition', params: { max: 5, pictures: true } },
@@ -76,7 +76,7 @@ export const SKILLS = [
     ] },
   { id: 'odcitani', domain: 'cisla', name: 'Odčítání', child: 'Kolik zbylo?', emoji: '➖',
     desc: 'Ubírání s obrázky, pak zpaměti.',
-    refs: ['2.07', '2.09'],
+    refs: ['2.09', '2.05', '2.18'],
     prereq: { scitani: 1 },
     levels: [
       { label: 'do 5 s obrázky', gen: 'subtraction', params: { max: 5, pictures: true } },
@@ -85,7 +85,7 @@ export const SKILLS = [
     ] },
   { id: 'rozklad', domain: 'cisla', name: 'Rozklad čísla', child: 'Kolik se schovalo?', emoji: '🙈',
     desc: 'Část–celek: číslo jako složené z částí (5 = 2 + 3). Základ pro sčítání zpaměti.',
-    refs: ['2.07', '2.11'],
+    refs: ['2.05', '2.15', '2.04', '2.17'],
     prereq: { scitani: 1 },
     levels: [
       { label: 'Rozklad 5', gen: 'partWhole', params: { total: 5 } },
@@ -96,7 +96,7 @@ export const SKILLS = [
   // ───────────── PÍSMENA ─────────────
   { id: 'velka', domain: 'pismena', name: 'Písmena', child: 'Najdi písmeno', emoji: '🅰️',
     desc: 'Rozpoznání velkých a malých tiskacích písmen podle názvu.',
-    refs: ['3.01', '3.02'],
+    refs: ['3.01', '3.05', '3.06', '3.16', '3.04'],
     levels: [
       { label: 'Velká (4 možnosti)', gen: 'letterPick', params: { options: 4, lower: false } },
       { label: 'Velká (8 možností)', gen: 'letterPick', params: { options: 8, lower: false } },
@@ -106,7 +106,7 @@ export const SKILLS = [
     ] },
   { id: 'hlaska', domain: 'pismena', name: 'Hlásky ve slově', child: 'Jakou hlásku slyšíš?', emoji: '👂',
     desc: 'Fonematické uvědomování: první a poslední hláska, spojení hláska–písmeno.',
-    refs: ['3.01', '3.03', '3.05'],
+    refs: ['3.01', '3.02', '3.03', '3.05', '3.07'],
     levels: [
       { label: 'Co začíná na…', gen: 'firstSound', params: { options: 3 } },
       { label: 'Jakým písmenem začíná', gen: 'firstLetter', params: { options: 3 } },
@@ -115,7 +115,7 @@ export const SKILLS = [
     ] },
   { id: 'slabiky', domain: 'pismena', name: 'Slabiky a rýmy', child: 'Vytleskej', emoji: '👏',
     desc: 'Slabikování a rýmování – fonologické uvědomování na úrovni slabik.',
-    refs: ['3.01', '3.04'],
+    refs: ['3.07', '3.14', '3.02', '3.18'],
     levels: [
       { label: 'Kolik slabik (1–2)', gen: 'syllables', params: { max: 2 } },
       { label: 'Kolik slabik (1–3)', gen: 'syllables', params: { max: 3 } },
@@ -124,7 +124,7 @@ export const SKILLS = [
     ] },
   { id: 'slova', domain: 'pismena', name: 'Skládání a čtení slov', child: 'Slož slovo', emoji: '🧱',
     desc: 'Skládání krátkých slov z písmen podle sluchu; čtení jednoduchých slov (jen pokud dítě chce).',
-    refs: ['3.02', '3.06', '3.08'],
+    refs: ['3.04', '3.14', '3.12', '3.16', '3.06'],
     prereq: { hlaska: 2, velka: 1 },
     levels: [
       { label: 'Slova na 2–3 písmena', gen: 'buildWord', params: { maxLen: 3 } },
@@ -134,7 +134,7 @@ export const SKILLS = [
     ] },
   { id: 'slovnik', domain: 'pismena', name: 'Slova a skupiny', child: 'Co kam patří', emoji: '🗂️',
     desc: 'Slovní zásoba, kategorie, nadřazené pojmy, protiklady.',
-    refs: ['3.07', '4.03'],
+    refs: ['3.09', '3.10', '3.11', '6.06', '3.18'],
     levels: [
       { label: 'Co nepatří do skupiny', gen: 'oddCategory', params: { n: 4 } },
       { label: 'Vyber všechna zvířata…', gen: 'selectCategory', params: { n: 6 } },
@@ -144,7 +144,7 @@ export const SKILLS = [
   // ───────────── LOGIKA ─────────────
   { id: 'vzory', domain: 'logika', name: 'Vzory', child: 'Co bude dál?', emoji: '🔁',
     desc: 'Opakující se a rostoucí vzory – základ algebraického myšlení.',
-    refs: ['4.04', '2.10'],
+    refs: ['2.14', '4.08', '6.17', '2.15'],
     levels: [
       { label: 'ABAB', gen: 'patternNext', params: { type: 'AB' } },
       { label: 'AAB / ABB', gen: 'patternNext', params: { type: 'AAB' } },
@@ -153,7 +153,7 @@ export const SKILLS = [
     ] },
   { id: 'trideni', domain: 'logika', name: 'Třídění', child: 'Roztřiď', emoji: '🧺',
     desc: 'Třídění podle jedné a dvou vlastností (klasifikace).',
-    refs: ['4.03', '4.05'],
+    refs: ['4.07', '4.15', '6.02', '1.16'],
     levels: [
       { label: 'Podle barvy', gen: 'sortBy', params: { by: 'color' } },
       { label: 'Podle tvaru', gen: 'sortBy', params: { by: 'shape' } },
@@ -161,7 +161,7 @@ export const SKILLS = [
     ] },
   { id: 'razeni', domain: 'logika', name: 'Řazení podle velikosti', child: 'Seřaď', emoji: '📏',
     desc: 'Seriace – od nejmenšího k největšímu.',
-    refs: ['4.03'],
+    refs: ['4.07', '6.03', '6.02'],
     levels: [
       { label: '3 předměty', gen: 'orderBySize', params: { n: 3 } },
       { label: '4 předměty', gen: 'orderBySize', params: { n: 4 } },
@@ -169,21 +169,21 @@ export const SKILLS = [
     ] },
   { id: 'analogie', domain: 'logika', name: 'Analogie', child: 'Co k sobě patří', emoji: '🔗',
     desc: 'Vztahové usuzování: pták → hnízdo, pes → ?',
-    refs: ['4.06'],
+    refs: ['4.09', '4.10', '1.15', '1.21'],
     levels: [
       { label: 'Obrázkové dvojice', gen: 'analogy', params: { options: 3 } },
       { label: 'Obrázkové dvojice (4)', gen: 'analogy', params: { options: 4 } },
     ] },
   { id: 'posloupnost', domain: 'logika', name: 'Co bylo dřív', child: 'Seřaď příběh', emoji: '🎬',
     desc: 'Časová posloupnost dějů, příčina a následek.',
-    refs: ['4.03', '3.07'],
+    refs: ['3.11', '6.03', '6.09', '6.02'],
     levels: [
       { label: '3 obrázky', gen: 'orderStory', params: { n: 3 } },
       { label: '4 obrázky', gen: 'orderStory', params: { n: 4 } },
     ] },
   { id: 'sudoku', domain: 'logika', name: 'Obrázkové sudoku', child: 'Doplň sudoku', emoji: '🔲',
     desc: 'Vylučovací logika v mřížce 4×4.',
-    refs: ['4.02'],
+    refs: ['4.07', '4.01', '1.21', '4.15'],
     prereq: { trideni: 1 },
     levels: [
       { label: '4×4, 1 chybí', gen: 'sudoku', params: { missing: 1 } },
@@ -192,7 +192,7 @@ export const SKILLS = [
     ] },
   { id: 'hadanky', domain: 'logika', name: 'Hádanky', child: 'Uhodni', emoji: '💡',
     desc: 'Porozumění popisu, dedukce z několika vlastností.',
-    refs: ['3.07', '4.06'],
+    refs: ['4.20', '4.09', '1.15', '3.11'],
     levels: [
       { label: 'Dvě nápovědy', gen: 'riddle', params: { clues: 2, options: 3 } },
       { label: 'Tři nápovědy', gen: 'riddle', params: { clues: 3, options: 4 } },
@@ -201,7 +201,7 @@ export const SKILLS = [
   // ───────────── PAMĚŤ A POZORNOST ─────────────
   { id: 'pexeso', domain: 'pamet', name: 'Pexeso', child: 'Pexeso', emoji: '🃏',
     desc: 'Pracovní paměť a strategie hledání.',
-    refs: ['4.01', '4.07'],
+    refs: ['4.04', '4.06', '4.01', '6.03'],
     levels: [
       { label: '6 karet', gen: 'memoryGrid', params: { pairs: 3 } },
       { label: '8 karet', gen: 'memoryGrid', params: { pairs: 4 } },
@@ -210,7 +210,7 @@ export const SKILLS = [
     ] },
   { id: 'sekvence', domain: 'pamet', name: 'Zapamatuj si pořadí', child: 'Zopakuj', emoji: '🎵',
     desc: 'Krátkodobá sekvenční paměť (jako hra Simon).',
-    refs: ['4.01', '4.07'],
+    refs: ['4.04', '6.09', '4.06', '6.16'],
     levels: [
       { label: '2 kroky', gen: 'simon', params: { len: 2 } },
       { label: '3 kroky', gen: 'simon', params: { len: 3 } },
@@ -219,7 +219,7 @@ export const SKILLS = [
     ] },
   { id: 'pozornost', domain: 'pamet', name: 'Pozor, jen ryby!', child: 'Pozor!', emoji: '🐟',
     desc: 'Inhibice (go/no-go): reaguj jen na cíl, ostatní ignoruj; obrácené pravidlo trénuje flexibilitu.',
-    refs: ['4.01', '4.02', '4.08'],
+    refs: ['4.01', '4.02', '4.03', '4.05'],
     levels: [
       { label: 'Klikej jen na cíl (pomalu)', gen: 'goNoGo', params: { trials: 10, ms: 1800, reverse: false } },
       { label: 'Klikej jen na cíl (rychleji)', gen: 'goNoGo', params: { trials: 12, ms: 1300, reverse: false } },
@@ -227,7 +227,7 @@ export const SKILLS = [
     ] },
   { id: 'cochybi', domain: 'pamet', name: 'Co zmizelo', child: 'Co zmizelo?', emoji: '🎩',
     desc: 'Vizuální pracovní paměť.',
-    refs: ['4.01'],
+    refs: ['4.04', '6.03', '6.08', '4.06'],
     levels: [
       { label: '3 předměty', gen: 'whatsMissing', params: { n: 3, ms: 3000 } },
       { label: '5 předmětů', gen: 'whatsMissing', params: { n: 5, ms: 3500 } },
@@ -235,7 +235,7 @@ export const SKILLS = [
     ] },
   { id: 'rozdily', domain: 'pamet', name: 'Najdi stejný', child: 'Najdi stejný', emoji: '🔍',
     desc: 'Zrakové rozlišování detailů (důležité pro čtení: b/d, m/n).',
-    refs: ['6.05', '3.02'],
+    refs: ['6.08', '6.03', '6.09', '6.02'],
     levels: [
       { label: 'Jiná barva', gen: 'findSame', params: { diff: 'color', options: 4 } },
       { label: 'Jiný detail', gen: 'findSame', params: { diff: 'detail', options: 4 } },
@@ -254,14 +254,14 @@ export const SKILLS = [
     ] },
   { id: 'symetrie', domain: 'tvary', name: 'Zrcadlo', child: 'Doplň obrázek', emoji: '🪞',
     desc: 'Osová symetrie – doplnění druhé poloviny.',
-    refs: ['2.12'],
+    refs: ['6.07', '6.08', '6.03'],
     levels: [
       { label: 'Jednoduché obrázky', gen: 'symmetryPick', params: { size: 3, options: 3 } },
       { label: 'Složitější mřížka', gen: 'symmetryPick', params: { size: 4, options: 4 } },
     ] },
   { id: 'orientace', domain: 'tvary', name: 'Nad, pod, vlevo, vpravo', child: 'Kde to je?', emoji: '🧭',
     desc: 'Prostorové pojmy a pravo-levá orientace.',
-    refs: ['2.12', '6.04'],
+    refs: ['2.13', '6.02', '6.03', '6.16', '6.09'],
     levels: [
       { label: 'Nad / pod / vedle', gen: 'positionPick', params: { set: 'vertical' } },
       { label: 'Vlevo / vpravo', gen: 'positionPick', params: { set: 'horizontal' } },
@@ -269,7 +269,7 @@ export const SKILLS = [
     ] },
   { id: 'rotace', domain: 'tvary', name: 'Otočený obrázek', child: 'Který je stejný?', emoji: '🔄',
     desc: 'Mentální rotace – který tvar je ten samý, jen otočený.',
-    refs: ['2.12'],
+    refs: ['4.11', '2.13', '6.08'],
     prereq: { tvary: 1 },
     levels: [
       { label: 'Otočení o 90°', gen: 'rotationPick', params: { options: 3, angles: [90, 180, 270] } },
@@ -277,7 +277,7 @@ export const SKILLS = [
     ] },
   { id: 'skladani', domain: 'tvary', name: 'Skládání tvarů', child: 'Z čeho se skládá?', emoji: '🧩',
     desc: 'Kompozice a dekompozice tvarů (2 díly → celek).',
-    refs: ['2.12', '4.05'],
+    refs: ['2.13', '4.11', '2.18', '6.17'],
     prereq: { tvary: 1 },
     levels: [
       { label: 'Dva díly', gen: 'composePick', params: { options: 3 } },
@@ -286,7 +286,7 @@ export const SKILLS = [
   // ───────────── SVĚT KOLEM NÁS ─────────────
   { id: 'cas', domain: 'svet', name: 'Čas', child: 'Kdy to děláme?', emoji: '🌞',
     desc: 'Části dne, dny v týdnu, roční období.',
-    refs: ['6.01', '6.02'],
+    refs: ['6.01', '6.02', '6.03', '6.16', '1.17'],
     levels: [
       { label: 'Ráno, poledne, večer, noc', gen: 'dayParts', params: {} },
       { label: 'Roční období', gen: 'seasons', params: {} },
@@ -294,7 +294,7 @@ export const SKILLS = [
     ] },
   { id: 'priroda', domain: 'svet', name: 'Zvířata a příroda', child: 'Kde bydlí?', emoji: '🐾',
     desc: 'Vztahy v přírodě: kde zvíře žije, mládě, co jí; živé a neživé.',
-    refs: ['6.01', '6.08'],
+    refs: ['6.06', '6.10', '6.11', '6.01', '5.16'],
     levels: [
       { label: 'Kde zvíře žije', gen: 'animalHome', params: {} },
       { label: 'Mláďata', gen: 'animalBaby', params: {} },
@@ -302,7 +302,7 @@ export const SKILLS = [
     ] },
   { id: 'hodiny', domain: 'svet', name: 'Hodiny', child: 'Kolik je hodin?', emoji: '🕒',
     desc: 'Celé hodiny na ciferníku.',
-    refs: ['6.01'],
+    refs: ['6.02', '6.03', '1.17', '6.16'],
     prereq: { cislice: 2 },
     levels: [
       { label: 'Celé hodiny (1–6)', gen: 'clockPick', params: { max: 6, options: 3 } },
@@ -311,19 +311,19 @@ export const SKILLS = [
 
   // ───────────── RUKA A TUŽKA (jen tisk) ─────────────
   { id: 'cary', domain: 'ruka', name: 'Čáry a vlnovky', emoji: '〰️', printOnly: true,
-    desc: 'Uvolňovací cviky, vedení čáry zleva doprava, smyčky, oblouky.', refs: ['6.03', '6.06'],
+    desc: 'Uvolňovací cviky, vedení čáry zleva doprava, smyčky, oblouky.', refs: ['6.05', '6.03', '6.06', '6.01', '6.02'],
     levels: [ { label: 'Rovné a vlnité', ws: 'cary', params: { kind: 'simple' } }, { label: 'Smyčky a oblouky', ws: 'cary', params: { kind: 'loops' } } ] },
   { id: 'obtah', domain: 'ruka', name: 'Obtahování číslic a písmen', emoji: '✍️', printOnly: true,
-    desc: 'Tvar číslic a velkých písmen – obtahování po tečkované čáře.', refs: ['6.03', '3.06'],
+    desc: 'Tvar číslic a velkých písmen – obtahování po tečkované čáře.', refs: ['6.05', '3.13', '3.01', '6.03'],
     levels: [ { label: 'Číslice 0–9', ws: 'obtah', params: { set: 'digits' } }, { label: 'Velká písmena', ws: 'obtah', params: { set: 'letters' } } ] },
   { id: 'labyrint', domain: 'ruka', name: 'Labyrinty', emoji: '🌀', printOnly: true,
-    desc: 'Plánování cesty, vizuomotorická koordinace.', refs: ['4.01', '6.03'],
+    desc: 'Plánování cesty, vizuomotorická koordinace.', refs: ['6.05', '6.03', '6.17', '6.02', '4.16'],
     levels: [ { label: 'Malý', ws: 'labyrint', params: { size: 6 } }, { label: 'Střední', ws: 'labyrint', params: { size: 9 } }, { label: 'Velký', ws: 'labyrint', params: { size: 12 } } ] },
   { id: 'spojovacka', domain: 'ruka', name: 'Spojovačky čísel', emoji: '⭐', printOnly: true,
-    desc: 'Číselná řada rukou: spoj body 1 → N a vznikne obrázek.', refs: ['2.04', '6.03'],
+    desc: 'Číselná řada rukou: spoj body 1 → N a vznikne obrázek.', refs: ['2.07', '2.08', '6.05', '4.19'],
     levels: [ { label: '1–10', ws: 'spojovacka', params: { n: 10 } }, { label: '1–20', ws: 'spojovacka', params: { n: 20 } }, { label: '1–30', ws: 'spojovacka', params: { n: 30 } } ] },
   { id: 'mrizka', domain: 'ruka', name: 'Dokresli zrcadlově', emoji: '🪞', printOnly: true,
-    desc: 'Symetrie v mřížce – přenos obrazce po čtverečkách.', refs: ['2.12', '6.05'],
+    desc: 'Symetrie v mřížce – přenos obrazce po čtverečkách.', refs: ['6.07', '6.08', '6.05', '6.03'],
     levels: [ { label: 'Mřížka 4×4', ws: 'mrizka', params: { size: 4 } }, { label: 'Mřížka 6×6', ws: 'mrizka', params: { size: 6 } } ] },
 ];
 

@@ -6,8 +6,8 @@
 Osobní, vědecky podložená vzdělávací aplikace pro syna (4,5 roku): interaktivní úkoly s hezkou grafikou na počítači + pracovní listy k černobílému tisku, sledování pokroku na pozadí a návrhy dalších rozvojových kroků. Oblasti: čísla, písmena, logika, paměť/pozornost, tvary a prostor, svět kolem nás, grafomotorika.
 
 ## Co je hotovo (v0.1, 2026-11-13)
-- **Rešerše**: 126 anotovaných zdrojů v 6 oblastech (`research/raw/01–06`), sjednocený `research/RESEARCH.md` (klíčová zjištění, designová pravidla, co evidence nepodporuje, mapování dovednost → zdroje) a pedagogický koncept `research/KONCEPT.md`.
-- **Aplikace** (čisté HTML/JS, bez závislostí): 37 dovedností / 110+ úrovní, 10 herních mechanik, český hlas, rychlá kalibrace při prvním spuštění, adaptivní model zvládnutí s rozloženým opakováním, plánovač sezení, samolepky, rodičovská sekce (přehled, dovednosti, doporučení, listy, nastavení, export/import).
+- **Rešerše**: 124 anotovaných zdrojů v 6 oblastech (`research/raw/01–06`), sjednocený `research/RESEARCH.md` (klíčová zjištění, designová pravidla, co evidence nepodporuje, mapování dovednost → zdroje) a pedagogický koncept `research/KONCEPT.md`.
+- **Aplikace** (čisté HTML/JS, bez závislostí): 38 dovedností / 110+ úrovní, 10 herních mechanik, český hlas, rychlá kalibrace při prvním spuštění, adaptivní model zvládnutí s rozloženým opakováním, plánovač sezení, samolepky, rodičovská sekce (přehled, dovednosti, doporučení, listy, nastavení, export/import).
 - **Pracovní listy**: 15 generátorů (SVG, A4, černobílé), parametrizované úrovní dítěte, s polem pro hodnocení rodičem; zápis výsledku v aplikaci.
 - `build.py` → jednosouborová `Skolicka.html`; `dev/playground.html` pro náhled úkolů.
 - Ověřeno v prohlížeči: 3 300 vygenerovaných úkolů bez chyby, simulace 30 dní sezení, všechny mechaniky a listy vizuálně zkontrolovány.
